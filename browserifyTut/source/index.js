@@ -3,7 +3,10 @@ wss = new WebSocketServer({port: 8080});
 
 wss.on('connection', function(ws) {
 
-    console.log('Client connected.\n'+wss.clients);
+    console.log('Client connected.\n');
+    wss.clients.forEach(function (conn) {
+        console.log();
+    });
 
     ws.on('message', function(message) {
         console.log('received: %s', message);
