@@ -1,9 +1,15 @@
-// import http from 'http';
-import { createServer } from 'http'; 
-// http.createServer((req, res) => {
-createServer((req, res) => {    
-    res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello world !!!\n');
-}).listen(3000, '127.0.0.1');
+import express from "express";
 
-console.log("Server is running !!!");
+var app = express();
+
+app.get('/', function (req, res) {
+    res.send("Hello express");
+});
+
+app.get('/yo', function (req, res) {
+    res.send('yo');
+});
+
+var server = app.listen(3000, function() {
+    console.log("Server is running on http://localhost:"+server.address().port);
+});
